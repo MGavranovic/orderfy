@@ -1,0 +1,6 @@
+.graphs-container {
+  display: flex;
+  justify-content: center;
+
+  padding-left: 11vw;
+}

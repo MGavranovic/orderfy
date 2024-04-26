@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { AboutComponent } from './about/about.component';
+import { Component, OnInit } from '@angular/core';
+import { GraphsComponent } from './graphs/graphs.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [AboutComponent],
+  imports: [GraphsComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
