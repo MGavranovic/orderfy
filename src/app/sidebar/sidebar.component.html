@@ -10,7 +10,6 @@
     <li class="sidebar-nav-item" *ngFor="let data of navData">
       <a class="sidebar-nav-link" [href]="[data.routeLink]">
         <i class="sidebar-link-icon" [class]="data.icon"></i>
-
         <span class="sidebar-link-text" *ngIf="collapsed">{{
           data.label
         }}</span>
