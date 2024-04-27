@@ -1,12 +1,16 @@
-<div class="sidebar" [ngClass]="collapsed ? '' : ''">
+<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
   <div class="logo-container">
     <button class="logo">O</button>
     <div class="logo-text" *ngIf="collapsed">Orderfy</div>
-    <button class="btn-close" *ngIf="collapsed">X</button>
+    <button class="btn-close" *ngIf="collapsed">
+      <i class="pi pi-times"></i>
+    </button>
   </div>
   <ul class="sidebar-nav">
     <li class="sidebar-nav-item" *ngFor="let data of navData">
-      <a href="" class="sidebar-nav-link">
+      <a class="sidebar-nav-link" [href]="[data.routeLink]">
+        <i class="sidebar-link-icon" [class]="data.icon"></i>
+
         <span class="sidebar-link-text" *ngIf="collapsed">{{
           data.label
         }}</span>
