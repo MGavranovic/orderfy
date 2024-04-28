@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { GraphsComponent } from './graphs/graphs.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [GraphsComponent],
+  imports: [GraphsComponent, CommonModule, RouterModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
