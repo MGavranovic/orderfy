@@ -1,4 +1,15 @@
-.card {
-  width: 20vw;
-  height: 20vh;
+.chart-container {
+  height: 24rem;
+  padding: 30px;
+  border: solid black 2px;
+  border-radius: 30px;
+}
+
+.chart-description-text {
+  font-size: 18px;
+}
+
+.chart-note-text {
+  font-size: 16px;
+  padding-top: 7px;
 }

@@ -19,7 +19,7 @@ export class PiePaymentStatusDistributionComponent implements OnInit {
     const textColor = documentStyle.getPropertyValue('--text-color');
 
     this.data = {
-      labels: ['A', 'B', 'C'],
+      labels: ['Created', 'Successful', 'Unsuccessful'],
       datasets: [
         {
           data: [540, 325, 702],

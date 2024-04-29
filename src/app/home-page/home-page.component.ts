@@ -10,4 +10,18 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
-export class HomePageComponent {}
+export class HomePageComponent implements OnInit {
+  userFullName: string = 'Milos Gavranovic';
+  userParsedName: string = '';
+
+  parseName(name: string): string {
+    let userFirstName: string = name.split(' ')[0];
+    let userLastName: string = name.split(' ')[1];
+    this.userParsedName = `${userLastName}, ${userFirstName}`;
+    return this.userParsedName;
+  }
+
+  ngOnInit(): void {
+    this.parseName(this.userFullName);
+  }
+}

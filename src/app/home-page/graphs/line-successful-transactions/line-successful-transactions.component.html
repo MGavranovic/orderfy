@@ -1,3 +1,11 @@
-<div class="card">
-  <p-chart type="line" [data]="data" [options]="options"></p-chart>
+<div class="chart-container">
+  <div class="chart-text">
+    <p class="chart-description-text">Successful transactions</p>
+    <p class="chart-note-text">
+      In the past 30 days, our app had 250 transactions completed successfully
+    </p>
+  </div>
+  <div class="card">
+    <p-chart type="line" [data]="data" [options]="options"></p-chart>
+  </div>
 </div>
