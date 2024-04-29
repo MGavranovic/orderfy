@@ -5,15 +5,18 @@
 .chart-container {
   height: 24rem;
   padding: 30px;
-  border: solid black 2px;
+  border: solid #f2f3fc 2px;
   border-radius: 30px;
+  box-shadow: 0px 0px 7px 4px #f2f3fc;
 }
 
 .chart-description-text {
   font-size: 18px;
+  color: #4e5967;
 }
 
 .chart-note-text {
   font-size: 16px;
   padding-top: 7px;
+  color: #4e5967;
 }
