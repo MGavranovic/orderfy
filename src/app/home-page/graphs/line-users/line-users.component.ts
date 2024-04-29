@@ -35,8 +35,9 @@ export class LineUsersComponent implements OnInit {
     };
 
     this.options = {
+      responsive: true,
       maintainAspectRatio: false,
-      aspectRatio: 0.6,
+      aspectRatio: 1.1,
       plugins: {
         legend: {
           labels: {

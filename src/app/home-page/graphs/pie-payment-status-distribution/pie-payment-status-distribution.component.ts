@@ -38,6 +38,9 @@ export class PiePaymentStatusDistributionComponent implements OnInit {
     };
 
     this.options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 1.1,
       plugins: {
         legend: {
           labels: {
