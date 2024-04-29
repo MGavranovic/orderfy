@@ -2,7 +2,6 @@ import { Component, OnInit, input } from '@angular/core';
 import { GraphsComponent } from './graphs/graphs.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
