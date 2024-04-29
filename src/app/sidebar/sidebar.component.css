@@ -34,7 +34,7 @@
 .logo-text {
   margin-left: 1.5rem;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
 }
 
@@ -100,4 +100,12 @@ a {
   background-color: white;
   color: black;
   border-radius: 0.625rem;
+}
+
+.active {
+  background-color: white;
+  .sidebar-link-icon,
+  .sidebar-link-text {
+    color: black;
+  }
 }

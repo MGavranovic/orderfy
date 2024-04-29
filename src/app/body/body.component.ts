@@ -17,13 +17,13 @@ export class BodyComponent {
   getBodyClass(): string {
     let styleClass = '';
     if (this.collapsed && this.screenWidth > 768) {
-      styleClass = 'home-page-trimmed';
+      styleClass = 'body-trimmed';
     } else if (
       this.collapsed &&
       this.screenWidth <= 768 &&
       this.screenWidth > 0
     ) {
-      styleClass = 'home-page-md-screen';
+      styleClass = 'body-md-screen';
     }
     return styleClass;
   }
