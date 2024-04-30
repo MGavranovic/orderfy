@@ -1,0 +1,43 @@
+<div class="dialog-container">
+  <div mat-dialog-title>
+    <h1 class="header-text">Add new User</h1>
+  </div>
+  <form [formGroup]="addUserForm">
+    <div mat-dialog-content>
+      <div class="row">
+        <mat-form-field appearance="outline" class="name firstname-name">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="name last-name">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline" class="name email">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="name password">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" />
+        </mat-form-field>
+      </div>
+      <div class="row select">
+        <mat-form-field appearance="outline">
+          <mat-label>Role</mat-label>
+          <mat-select>
+            <mat-option value="one">Administrator</mat-option>
+            <mat-option value="two">Manager</mat-option>
+            <mat-option value="three">Customer</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-container" mat-dialog-action>
+      <button class="btn btn-save">Save</button>
+      <button class="btn btn-cancel">Cancel</button>
+    </div>
+  </form>
+</div>

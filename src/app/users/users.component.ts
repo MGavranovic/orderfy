@@ -1,29 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
-import { MenuItem } from 'primeng/api';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { MatIconModule } from '@angular/material/icon';
+import { AddEditUsersComponent } from './add-edit-users/add-edit-users.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [ToolbarModule, CommonModule, ButtonModule],
+  imports: [
+    ToolbarModule,
+    CommonModule,
+    ButtonModule,
+    DynamicDialogModule,
+    DialogModule,
+    ToastModule,
+    MatIconModule,
+    MatDialogModule,
+  ],
+  providers: [DialogService, MessageService],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
 })
-export class UsersComponent implements OnInit {
-  items: MenuItem[] | undefined;
+export class UsersComponent {
+  constructor(private _dialog: MatDialog) {}
 
-  ngOnInit() {
-    this.items = [
-      {
-        label: 'Update',
-        icon: 'pi pi-refresh',
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-times',
-      },
-    ];
+  openAddUserForm() {
+    this._dialog.open(AddEditUsersComponent);
   }
 }
