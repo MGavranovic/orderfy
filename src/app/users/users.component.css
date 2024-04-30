@@ -1,0 +1,46 @@
+@import "primeicons/primeicons.css";
+
+.card {
+  border: 2px #f2f3fc;
+  border-radius: 5px;
+  padding: 10px;
+  background: white;
+  box-shadow: 0px 0px 10px 7px #f2f3fc;
+}
+
+.toolbar-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #263238;
+  padding-left: 7px;
+}
+
+.toolbar-add-btn {
+  color: #263238;
+  background: #f2f3fc;
+  border: 2px #f2f3fc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: ease-in-out 0.3s;
+}
+
+.toolbar-add-btn:hover {
+  cursor: pointer;
+  color: #f2f3fc;
+  background: #263238;
+}
+
+.search-box-input {
+  justify-content: center;
+  color: #263238;
+  margin-right: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background: #f2f3fc;
+  width: 14rem;
+}
+
+.pi {
+  font-size: 375;
+}
