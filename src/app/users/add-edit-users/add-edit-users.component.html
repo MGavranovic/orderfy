@@ -7,36 +7,38 @@
       <div class="row">
         <mat-form-field appearance="outline" class="name firstname-name">
           <mat-label>First Name</mat-label>
-          <input matInput type="text" />
+          <input matInput type="text" formControlName="firstName" />
         </mat-form-field>
         <mat-form-field appearance="outline" class="name last-name">
           <mat-label>Last Name</mat-label>
-          <input matInput type="text" />
+          <input matInput type="text" formControlName="lastName" />
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field appearance="outline" class="name email">
           <mat-label>Email</mat-label>
-          <input matInput type="email" />
+          <input matInput type="email" formControlName="email" />
         </mat-form-field>
         <mat-form-field appearance="outline" class="name password">
           <mat-label>Password</mat-label>
-          <input matInput type="password" />
+          <input matInput type="password" formControlName="password" />
         </mat-form-field>
       </div>
       <div class="row select">
         <mat-form-field appearance="outline">
-          <mat-label>Role</mat-label>
-          <mat-select>
-            <mat-option value="one">Administrator</mat-option>
-            <mat-option value="two">Manager</mat-option>
-            <mat-option value="three">Customer</mat-option>
+          <mat-label>Select Roles</mat-label>
+          <mat-select [formControl]="roles" multiple formControlName="role">
+            @for (role of rolesList; track role) {
+            <mat-option [value]="role">{{ role }}</mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
     </div>
     <div class="btn-container" mat-dialog-action>
-      <button class="btn btn-save">Save</button>
+      <button class="btn btn-save" type="submit" (click)="logUser()">
+        Save
+      </button>
       <button class="btn btn-cancel">Cancel</button>
     </div>
   </form>
