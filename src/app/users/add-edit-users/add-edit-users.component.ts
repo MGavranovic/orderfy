@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -11,6 +15,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-add-edit-users',
@@ -30,13 +35,14 @@ import { MatTableModule } from '@angular/material/table';
   templateUrl: './add-edit-users.component.html',
   styleUrl: './add-edit-users.component.css',
 })
-export class AddEditUsersComponent {
+export class AddEditUsersComponent implements OnInit {
   addUserForm: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
-    private _dialogRef: DialogRef<AddEditUsersComponent>,
-    private _userService: UserService
+    private _dialogRef: MatDialogRef<AddEditUsersComponent>,
+    private _userService: UserService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.addUserForm = this._fb.group({
       firstName: '',
@@ -48,20 +54,38 @@ export class AddEditUsersComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.addUserForm.patchValue(this.data);
+  }
+
   roles = new FormControl('');
   rolesList: string[] = ['Administrator', 'Manager', 'Customer'];
 
   onSubmitForm() {
     if (this.addUserForm.valid) {
-      this._userService.addUser(this.addUserForm.value).subscribe({
-        next: (value: any) => {
-          alert('User added!');
-          this._dialogRef.close();
-        },
-        error: (err: any) => {
-          console.error(err);
-        },
-      });
+      if (this.data) {
+        this._userService
+          .updateUser(this.data.id, this.addUserForm.value)
+          .subscribe({
+            next: (value: any) => {
+              alert('User updated!');
+              this._dialogRef.close(true);
+            },
+            error: (err: any) => {
+              console.error(err);
+            },
+          });
+      } else {
+        this._userService.addUser(this.addUserForm.value).subscribe({
+          next: (value: any) => {
+            alert('User added!');
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            console.error(err);
+          },
+        });
+      }
     }
   }
 }

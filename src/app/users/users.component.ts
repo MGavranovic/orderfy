@@ -28,7 +28,7 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-users',
   standalone: true,
@@ -47,6 +47,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    MatButtonModule,
   ],
   providers: [
     DialogService,
@@ -69,6 +70,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     // 'password',
     'role',
     'createdOn',
+    'action',
   ];
   dataSource = new MatTableDataSource<any>(this.displayedColumns);
 
@@ -93,7 +95,12 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   openAddUserForm() {
-    this._dialog.open(AddEditUsersComponent);
+    const dialogRef = this._dialog.open(AddEditUsersComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (value: any) => {
+        if (value) this.getUserList();
+      },
+    });
   }
 
   getUserList() {
@@ -116,5 +123,26 @@ export class UsersComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteUser(id: any) {
+    this._userService.deleteUser(id).subscribe({
+      next: (valid) => {
+        alert('User deleted!');
+        this.getUserList();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  openEditUserForm(data: any) {
+    const dialogRef = this._dialog.open(AddEditUsersComponent, { data: data });
+    dialogRef.afterClosed().subscribe({
+      next: (value: any) => {
+        if (value) this.getUserList();
+      },
+    });
   }
 }

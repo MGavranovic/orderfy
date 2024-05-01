@@ -28,60 +28,20 @@
   },
   "users": [
     {
-      "id": "6181",
-      "firstName": "e",
+      "firstName": "2",
       "lastName": "e",
       "email": "e",
       "password": "e",
       "role": [
         "Customer"
-      ]
-    },
-    {
-      "id": "603f",
-      "firstName": "e",
-      "lastName": "e",
-      "email": "1",
-      "password": "2",
-      "role": [
-        "Manager"
-      ]
-    },
-    {
-      "id": "049b",
-      "firstName": "e",
-      "lastName": "e",
-      "email": "e",
-      "password": "e",
-      "role": [
-        "Customer"
-      ]
-    },
-    {
-      "id": "54ef",
-      "firstName": "23",
-      "lastName": "1",
-      "email": "1",
-      "password": "1",
-      "role": [
-        "Manager",
-        "Customer"
-      ]
+      ],
+      "createdOn": "Wed May 01 2024 18:48:02 GMT+0200 (Central European Summer Time)",
+      "id": "049b"
     },
     {
       "id": "205d",
       "firstName": "e",
       "lastName": "e",
-      "email": "e",
-      "password": "e",
-      "role": [
-        "Customer"
-      ]
-    },
-    {
-      "id": "897e",
-      "firstName": "e",
-      "lastName": "",
       "email": "e",
       "password": "e",
       "role": [
@@ -118,6 +78,46 @@
         "Customer"
       ],
       "createdOn": "Wed May 01 2024 15:59:34 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "a8b6",
+      "firstName": "Test1",
+      "lastName": "Test2",
+      "email": "Test3",
+      "password": "Test4",
+      "role": "",
+      "createdOn": "Wed May 01 2024 18:28:01 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "5877",
+      "firstName": "jes",
+      "lastName": "sir",
+      "email": "jes",
+      "password": "sir",
+      "role": "",
+      "createdOn": "Wed May 01 2024 18:31:34 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "9f60",
+      "firstName": "jesam",
+      "lastName": "iha",
+      "email": "e",
+      "password": "e",
+      "role": [
+        "Customer"
+      ],
+      "createdOn": "Wed May 01 2024 18:37:29 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "d3de",
+      "firstName": "1",
+      "lastName": "2",
+      "email": "3",
+      "password": "4",
+      "role": [
+        "Customer"
+      ],
+      "createdOn": "Wed May 01 2024 18:38:51 GMT+0200 (Central European Summer Time)"
     }
   ]
 }

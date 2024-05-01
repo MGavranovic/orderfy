@@ -12,7 +12,15 @@ export class UserService {
     return this._http.post('http://localhost:3000/users', data);
   }
 
+  updateUser(id: any, data: any): Observable<any> {
+    return this._http.put(`http://localhost:3000/users/${id}`, data);
+  }
+
   getUserList(): Observable<any> {
     return this._http.get('http://localhost:3000/users');
+  }
+
+  deleteUser(id: any): Observable<any> {
+    return this._http.delete(`http://localhost:3000/users/${id}`);
   }
 }

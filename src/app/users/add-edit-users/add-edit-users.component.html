@@ -36,8 +36,12 @@
       </div>
     </div>
     <div class="btn-container" mat-dialog-action>
-      <button class="btn btn-save" type="submit">Save</button>
-      <button class="btn btn-cancel">Cancel</button>
+      <button class="btn btn-save" type="submit">
+        {{ data ? "Update" : "Save" }}
+      </button>
+      <button class="btn btn-cancel" type="button" [mat-dialog-close]="false">
+        Cancel
+      </button>
     </div>
   </form>
 </div>
