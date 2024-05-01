@@ -5,6 +5,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BodyComponent } from './body/body.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 interface SidebarToggle {
   screenWidth: number;
@@ -21,6 +22,7 @@ interface SidebarToggle {
     CommonModule,
     BodyComponent,
     CommonModule,
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

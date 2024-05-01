@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Input } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-body',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css',
 })
