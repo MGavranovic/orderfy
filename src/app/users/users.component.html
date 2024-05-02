@@ -5,7 +5,13 @@
     </div>
     <div class="p-toolbar-group-center">
       <span class="p-input-icon-left">
-        <input pInputText placeholder="Search Users" class="search-box-input" />
+        <input
+          pInputText
+          placeholder="Search Users"
+          class="search-box-input"
+          (keyup)="applyFilter($event)"
+          #input
+        />
         <i class="pi pi-search"></i>
       </span>
     </div>
@@ -17,10 +23,12 @@
   </p-toolbar>
 </div>
 
+<!--
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="test" #input />
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
 </mat-form-field>
+-->
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
