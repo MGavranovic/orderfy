@@ -66,12 +66,24 @@ export class AddEditOrdersComponent implements OnInit {
       country: '',
       createdOn: new Date().toString(),
       paidOn: '',
-      authorizationCode: '',
+      authorizationCode: this.generateAuthorizationCode(4),
     });
   }
 
   ngOnInit(): void {
     this.addOrderForm.patchValue(this.data);
+  }
+
+  generateAuthorizationCode(length: number): string {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+    }
+    console.log(code);
+    return code;
   }
 
   onSubmitForm() {

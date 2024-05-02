@@ -21,6 +21,6 @@ export class OrderService {
   }
 
   deleteOrder(id: any): Observable<any> {
-    return this._http.get(`http://localhost:3000/orders/${id}`);
+    return this._http.delete(`http://localhost:3000/orders/${id}`);
   }
 }
