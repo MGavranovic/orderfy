@@ -79,8 +79,11 @@ export class AddEditOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.addOrderForm.patchValue(this.data);
   }
+
   paymentStatusCheck: boolean = false;
+
   timeOfPayment: string = '';
+
   generatePaymentStatus(): PaymentStatus {
     let outcome = Math.random();
     if (outcome < 0.6) {
