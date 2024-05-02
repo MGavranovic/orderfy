@@ -74,8 +74,14 @@ export class OrdersComponent implements AfterViewInit {
     'status',
     'amount',
     'currency',
-    'customerData',
-    // 'createdOn',
+    // 'firstName',
+    'lastName',
+    'email',
+    'address',
+    'city',
+    'country',
+    'createdOn',
+    'paidOn',
     'authorizationCode',
     'action',
   ];
@@ -92,7 +98,7 @@ export class OrdersComponent implements AfterViewInit {
   constructor(private _dialog: MatDialog, private _orderService: OrderService) {
     this.getUserList();
   }
-
+  paymentStatus = false;
   openOrderform(): void {
     const dialogRef = this._dialog.open(AddEditOrdersComponent);
     dialogRef.afterClosed().subscribe({

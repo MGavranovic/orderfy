@@ -1,6 +1,7 @@
 .dialog-container {
   border-radius: 10px;
   border: 2px #f2f3fc;
+  overflow-x: scroll;
 }
 
 .header-text {

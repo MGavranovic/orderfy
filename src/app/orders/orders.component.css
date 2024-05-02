@@ -8,6 +8,16 @@
   box-shadow: 0px 0px 10px 7px #f2f3fc;
 }
 
+.mat-elevation-z8 {
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.mat-form-field {
+  display: inline-block;
+}
+
 .toolbar-text {
   font-size: 18px;
   font-weight: 400;

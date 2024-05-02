@@ -21,6 +21,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { Inject } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { validateHeaderName } from 'http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-orders',
@@ -28,6 +29,7 @@ import { validateHeaderName } from 'http';
   imports: [
     MatDialogModule,
     MatFormFieldModule,
+    CommonModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
@@ -35,7 +37,7 @@ import { validateHeaderName } from 'http';
     HttpClientModule,
     MatTableModule,
   ],
-  providers: [OrderService],
+  providers: [OrderService, CommonModule],
   templateUrl: './add-edit-orders.component.html',
   styleUrl: './add-edit-orders.component.css',
 })
@@ -54,7 +56,14 @@ export class AddEditOrdersComponent implements OnInit {
       status: '',
       amount: '',
       currency: '',
-      customerData: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      postalCode: '',
+      city: '',
+      country: '',
       createdOn: new Date().toString(),
       paidOn: '',
       authorizationCode: '',
