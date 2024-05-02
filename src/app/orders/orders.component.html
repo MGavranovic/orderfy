@@ -9,12 +9,98 @@
           pInputText
           placeholder="Search Orders"
           class="search-box-input"
+          (keyup)="applyFilter($event)"
+          #input
         />
         <i class="pi pi-search"></i>
       </span>
     </div>
     <div class="p-toolbar-group-end">
-      <button class="toolbar-add-btn">Add Order</button>
+      <button class="toolbar-add-btn" (click)="openOrderform()">Add Order</button>
     </div>
   </p-toolbar>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descriptione</th>
+      <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+      <td mat-cell *matCellDef="let row">{{ row.amount }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Currency</th>
+      <td mat-cell *matCellDef="let row">{{ row.currency }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="customerData">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Data</th>
+      <td mat-cell *matCellDef="let row">{{ row.customerData }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+      <td mat-cell *matCellDef="let row">{{ row.createdOn | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="paidOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Paid On</th>
+      <td mat-cell *matCellDef="let row">{{ row.paidOn }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="authorizationCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Authorization Code
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.authorizationCode }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow="">
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+    aria-label="Select page of Orders"
+  >
+  </mat-paginator>
 </div>
