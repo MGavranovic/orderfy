@@ -23,6 +23,12 @@ import { OrderService } from '../../services/order.service';
 import { validateHeaderName } from 'http';
 import { CommonModule } from '@angular/common';
 
+enum PaymentStatus {
+  Pending = 'Pending',
+  Successful = 'Successful',
+  Failed = 'Failed',
+}
+
 @Component({
   selector: 'app-add-edit-orders',
   standalone: true,
@@ -53,7 +59,7 @@ export class AddEditOrdersComponent implements OnInit {
     this.addOrderForm = this._fb.group({
       title: '',
       description: '',
-      status: '',
+      status: this.generatePaymentStatus(),
       amount: '',
       currency: '',
       firstName: '',
@@ -65,25 +71,43 @@ export class AddEditOrdersComponent implements OnInit {
       city: '',
       country: '',
       createdOn: new Date().toString(),
-      paidOn: '',
-      authorizationCode: this.generateAuthorizationCode(4),
+      paidOn: this.timeOfPayment,
+      authorizationCode: '',
     });
   }
 
   ngOnInit(): void {
     this.addOrderForm.patchValue(this.data);
   }
-
-  generateAuthorizationCode(length: number): string {
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let code = '';
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      code += characters.charAt(randomIndex);
+  paymentStatusCheck: boolean = false;
+  timeOfPayment: string = '';
+  generatePaymentStatus(): PaymentStatus {
+    let outcome = Math.random();
+    if (outcome < 0.6) {
+      this.paymentStatusCheck = true;
+      this.timeOfPayment = new Date().toString();
+      return PaymentStatus.Successful;
+    } else if (outcome < 0.8) {
+      return PaymentStatus.Failed;
+    } else {
+      return PaymentStatus.Pending;
     }
-    console.log(code);
-    return code;
+  }
+
+  generateAuthorizationCode(length: number): string | null {
+    if (this.paymentStatusCheck) {
+      const characters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let code = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        code += characters.charAt(randomIndex);
+      }
+      console.log(code);
+      return code;
+    } else {
+      return null;
+    }
   }
 
   onSubmitForm() {
@@ -103,6 +127,7 @@ export class AddEditOrdersComponent implements OnInit {
       } else {
         this._orderService.addOrder(this.addOrderForm.value).subscribe({
           next: (value: any) => {
+            this.generateAuthorizationCode(4);
             this._dialogRef.close(true);
             console.log(value);
           },
