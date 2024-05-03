@@ -24,6 +24,7 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
   orderData: any[];
   transformedData: any[];
   chartDataArray: any[] = [];
+  numberOfSuccessfulTransactions: number;
 
   constructor(private _pullDataService: PullDataService) {
     this.getOrdersData();
@@ -95,6 +96,7 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
 
     let dayDif: number;
     let indexArray: number;
+    let numOfSucTransactions: number = 0;
 
     for (let i = 0; i < this.orderData.length; i++) {
       if (this.orderData[i].paidOn) {
@@ -103,15 +105,17 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
         // console.log(paidOnDate);
         dayDif =
           (todayDate.getTime() - paidOnDate.getTime()) / 1000 / 60 / 60 / 24;
-        console.log(dayDif);
+        // console.log(dayDif);
         if (dayDif >= 0 && dayDif < 30) {
           // console.log(Math.floor(dayDif));
           indexArray = chartArray.length - Math.floor(dayDif) - 1;
           // console.log('poz', indexArray);
           chartArray[indexArray] += 1;
+          numOfSucTransactions += 1;
         }
       }
     }
+    this.numberOfSuccessfulTransactions = numOfSucTransactions;
 
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
