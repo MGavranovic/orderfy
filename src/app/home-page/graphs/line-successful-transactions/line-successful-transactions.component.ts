@@ -18,11 +18,8 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
   data: any;
   options: any;
   dates: { day: number; month: number }[] = [];
-  unformatedDateForDataFiltering: Date[] = [];
-  formatedDate: any;
   formatedDateArr: any[] = [];
   orderData: any[];
-  transformedData: any[];
   chartDataArray: any[] = [];
   numberOfSuccessfulTransactions: number;
 
