@@ -32,7 +32,9 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": ["Customer"],
+      "role": [
+        "Customer"
+      ],
       "createdOn": "Wed May 01 2024 18:48:02 GMT+0200 (Central European Summer Time)",
       "id": "049b"
     },
@@ -42,7 +44,9 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": ["Customer"]
+      "role": [
+        "Customer"
+      ]
     },
     {
       "id": "e6c2",
@@ -50,7 +54,9 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": ["Customer"]
+      "role": [
+        "Customer"
+      ]
     },
     {
       "id": "53ba",
@@ -58,16 +64,9 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": ["Manager"]
-    },
-    {
-      "id": "b3ff",
-      "firstName": "e",
-      "lastName": "e",
-      "email": "e",
-      "password": "e",
-      "role": ["Customer"],
-      "createdOn": "Wed May 01 2024 15:59:34 GMT+0200 (Central European Summer Time)"
+      "role": [
+        "Manager"
+      ]
     },
     {
       "id": "a8b6",
@@ -93,7 +92,9 @@
       "lastName": "iha",
       "email": "e",
       "password": "e",
-      "role": ["Customer"],
+      "role": [
+        "Customer"
+      ],
       "createdOn": "Wed May 01 2024 18:37:29 GMT+0200 (Central European Summer Time)"
     },
     {
@@ -102,8 +103,21 @@
       "lastName": "2",
       "email": "3",
       "password": "4",
-      "role": ["Customer"],
+      "role": [
+        "Customer"
+      ],
       "createdOn": "Wed May 01 2024 18:38:51 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "ac21",
+      "firstName": "3",
+      "lastName": "3",
+      "email": "3",
+      "password": "3",
+      "role": [
+        "Customer"
+      ],
+      "createdOn": "Fri May 03 2024 13:03:24 GMT+0200 (Central European Summer Time)"
     }
   ],
   "orders": [
@@ -538,6 +552,25 @@
       "paidOn": "Thu May 02 2024 16:51:05 GMT+0200 (Central European Summer Time)",
       "authorizationCode": "",
       "id": "036a"
+    },
+    {
+      "id": "6183",
+      "title": "chartest",
+      "description": "",
+      "status": "Successful",
+      "amount": "",
+      "currency": "",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "postalCode": "",
+      "city": "",
+      "country": "",
+      "createdOn": "Fri May 03 2024 12:56:23 GMT+0200 (Central European Summer Time)",
+      "paidOn": "Fri May 03 2024 12:56:23 GMT+0200 (Central European Summer Time)",
+      "authorizationCode": ""
     }
   ]
 }

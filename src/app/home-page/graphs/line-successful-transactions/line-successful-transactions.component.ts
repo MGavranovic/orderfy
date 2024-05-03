@@ -1,10 +1,17 @@
-import { Component, Inject, Injectable, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import { response } from 'express';
 import { ChartModule } from 'primeng/chart';
 import { PullDataService } from '../../../services/pull-data.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from '../../../orders/orders.component';
+import { resolve } from 'path';
 
 @Component({
   selector: 'app-line-successful-transactions',
@@ -19,24 +26,29 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
   options: any;
   dates: { day: number; month: number }[] = [];
   formatedDateArr: any[] = [];
-  orderData: any[];
+  orderData: any[] = [];
   chartDataArray: any[] = [];
   numberOfSuccessfulTransactions: number;
 
   constructor(private _pullDataService: PullDataService) {
-    this.getOrdersData();
+    console.log('consturktor');
   }
 
   getOrdersData() {
-    this._pullDataService
-      .getOrdersData()
-      .subscribe((data) => (this.orderData = data));
-    // console.log(this.orderData);
+    this._pullDataService.getOrdersData().subscribe({
+      next: (value) => {
+        console.log('getOrdersData running');
+        this.orderData = value;
+        console.log(this.orderData);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   getLastThirtyDays(): { day: number; month: number }[] {
     const today: Date = new Date();
-    console.log(today);
 
     for (let i = 29; i >= 0; i--) {
       // const dateForDataFiltering = new Date(today);
@@ -46,7 +58,7 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
       const day = date.getDate();
       const month = date.getMonth();
       this.dates.push({ day, month });
-      console.log('dm ', day, month);
+      // console.log('dm ', day, month);
       // this.unformatedDateForDataFiltering.push(dateForDataFiltering);
     }
     // console.log(this.dates);
@@ -74,97 +86,107 @@ export class LineSuccessfulTransactionsComponent implements OnInit {
   last30Days: any[] = this.getLastThirtyDays() || [];
 
   ngOnInit() {
-    this.last30Days.forEach(
-      ({ day, month }: { day: number; month: number }) => {
-        const formattedDate = this.formatDayMonth(day, month);
-        // console.log(formattedDate);
-        this.formatedDateArr.push(formattedDate);
-        // console.log(this.formatedDateArr);
-      }
-    );
+    console.log('init');
+    this._pullDataService.getOrdersData().subscribe((data) => {
+      this.orderData = data;
 
-    const chartArray = new Array(30).fill(0);
-    // console.log(chartArray);
-    let paidOnDateString;
-    let paidOnDate;
-    let todayDate = new Date();
-    todayDate.setHours(24, 0, 0, 0);
-    console.log(todayDate);
-
-    let dayDif: number;
-    let indexArray: number;
-    let numOfSucTransactions: number = 0;
-
-    for (let i = 0; i < this.orderData.length; i++) {
-      if (this.orderData[i].paidOn) {
-        paidOnDateString = this.orderData[i].paidOn;
-        paidOnDate = new Date(paidOnDateString);
-        // console.log(paidOnDate);
-        dayDif =
-          (todayDate.getTime() - paidOnDate.getTime()) / 1000 / 60 / 60 / 24;
-        // console.log(dayDif);
-        if (dayDif >= 0 && dayDif < 30) {
-          // console.log(Math.floor(dayDif));
-          indexArray = chartArray.length - Math.floor(dayDif) - 1;
-          // console.log('poz', indexArray);
-          chartArray[indexArray] += 1;
-          numOfSucTransactions += 1;
+      this.last30Days.forEach(
+        ({ day, month }: { day: number; month: number }) => {
+          const formattedDate = this.formatDayMonth(day, month);
+          // console.log(formattedDate);
+          this.formatedDateArr.push(formattedDate);
+          // console.log(this.formatedDateArr);
         }
+      );
+
+      const chartArray = new Array(30).fill(0);
+      // console.log(chartArray);
+      let paidOnDateString;
+      let paidOnDate;
+      let todayDate = new Date();
+      todayDate.setHours(24, 0, 0, 0);
+      // console.log(todayDate);
+
+      let dayDif: number;
+      let indexArray: number;
+      let numOfSucTransactions: number = 0;
+      for (let i = 0; i < this.orderData.length; i++) {
+        if (this.orderData[i].paidOn) {
+          paidOnDateString = this.orderData[i].paidOn;
+          paidOnDate = new Date(paidOnDateString);
+          // console.log(paidOnDate);
+          dayDif =
+            (todayDate.getTime() - paidOnDate.getTime()) / 1000 / 60 / 60 / 24;
+          // console.log(dayDif);
+          if (dayDif >= 0 && dayDif < 30) {
+            // console.log(Math.floor(dayDif));
+            indexArray = chartArray.length - Math.floor(dayDif) - 1;
+            // console.log('poz', indexArray);
+            chartArray[indexArray] += 1;
+            numOfSucTransactions += 1;
+          }
+        }
+        this.chartDataArray = chartArray;
+        // console.log(this.chartDataArray);
       }
-    }
-    this.numberOfSuccessfulTransactions = numOfSucTransactions;
+      this.numberOfSuccessfulTransactions = numOfSucTransactions;
 
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue(
-      '--text-color-secondary'
-    );
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+      // this.getOrdersData();
+      // console.log(this.orderData);
 
-    this.data = {
-      labels: this.formatedDateArr,
-      datasets: [
-        {
-          label: 'Successful Transactions',
-          data: chartArray,
-          fill: false,
-          borderColor: documentStyle.getPropertyValue('--blue-500'),
-          tension: 0,
-        },
-      ],
-    };
+      const documentStyle = getComputedStyle(document.documentElement);
+      const textColor = documentStyle.getPropertyValue('--text-color');
+      const textColorSecondary = documentStyle.getPropertyValue(
+        '--text-color-secondary'
+      );
+      const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-    this.options = {
-      responsive: true,
-      maintainAspectRatio: false,
-      aspectRatio: 1.1,
-      plugins: {
-        legend: {
-          labels: {
-            color: textColor,
+      console.log('Chart Data', this.chartDataArray);
+      this.data = {
+        labels: this.formatedDateArr,
+        datasets: [
+          {
+            label: 'Successful Transactions',
+            data: this.chartDataArray,
+            fill: false,
+            borderColor: documentStyle.getPropertyValue('--blue-500'),
+            tension: 0,
+          },
+        ],
+      };
+
+      this.options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        aspectRatio: 1.1,
+        plugins: {
+          legend: {
+            labels: {
+              color: textColor,
+            },
           },
         },
-      },
-      scales: {
-        x: {
-          ticks: {
-            color: textColorSecondary,
+        scales: {
+          x: {
+            ticks: {
+              color: textColorSecondary,
+            },
+            grid: {
+              color: surfaceBorder,
+              drawBorder: false,
+            },
           },
-          grid: {
-            color: surfaceBorder,
-            drawBorder: false,
+          y: {
+            ticks: {
+              color: textColorSecondary,
+            },
+            grid: {
+              color: surfaceBorder,
+              drawBorder: false,
+            },
           },
         },
-        y: {
-          ticks: {
-            color: textColorSecondary,
-          },
-          grid: {
-            color: surfaceBorder,
-            drawBorder: false,
-          },
-        },
-      },
-    };
+      };
+    });
   }
 }
