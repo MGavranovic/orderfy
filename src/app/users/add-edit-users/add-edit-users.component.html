@@ -32,9 +32,26 @@
             >Invalid email format</mat-error
           >
         </mat-form-field>
-        <mat-form-field appearance="outline" class="name password">
+        <mat-form-field
+          appearance="outline"
+          class="name password"
+          [class.error]="
+            addUserForm.get('password')?.invalid &&
+            addUserForm.get('password')?.touched
+          "
+        >
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="addUserForm.get('password')?.hasError('required')"
+            >Password is required</mat-error
+          >
+          <mat-error *ngIf="addUserForm.get('password')?.hasError('minlength')"
+            >At least 8 characters long</mat-error
+          >
+          <mat-error *ngIf="addUserForm.get('password')?.hasError('pattern')"
+            >1 uppercase letter, 1 lowercase letter, 1 number, and 1 special
+            character</mat-error
+          >
         </mat-form-field>
       </div>
       <div class="row select">

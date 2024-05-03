@@ -39,16 +39,6 @@
       "id": "049b"
     },
     {
-      "id": "205d",
-      "firstName": "e",
-      "lastName": "e",
-      "email": "e",
-      "password": "e",
-      "role": [
-        "Customer"
-      ]
-    },
-    {
       "id": "e6c2",
       "firstName": "e",
       "lastName": "e",
@@ -149,6 +139,17 @@
         "Customer"
       ],
       "createdOn": "Fri May 03 2024 14:42:29 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "adb8",
+      "firstName": "e",
+      "lastName": "e",
+      "email": "e@gmail.com",
+      "password": "aw@2opopopsA",
+      "role": [
+        "Administrator"
+      ],
+      "createdOn": "Fri May 03 2024 14:50:53 GMT+0200 (Central European Summer Time)"
     }
   ],
   "orders": [
