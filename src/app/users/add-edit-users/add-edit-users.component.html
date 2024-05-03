@@ -15,9 +15,22 @@
         </mat-form-field>
       </div>
       <div class="row">
-        <mat-form-field appearance="outline" class="name email">
+        <mat-form-field
+          appearance="outline"
+          class="name email"
+          [class.error]="
+            addUserForm.get('email')?.invalid &&
+            addUserForm.get('email')?.touched
+          "
+        >
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email" />
+          <mat-error *ngIf="addUserForm.get('email')?.hasError('required')"
+            >Email is required</mat-error
+          >
+          <mat-error *ngIf="addUserForm.get('email')?.hasError('email')"
+            >Invalid email format</mat-error
+          >
         </mat-form-field>
         <mat-form-field appearance="outline" class="name password">
           <mat-label>Password</mat-label>

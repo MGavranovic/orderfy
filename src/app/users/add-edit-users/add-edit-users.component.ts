@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { Inject } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-users',
@@ -30,6 +32,7 @@ import { Inject } from '@angular/core';
     ReactiveFormsModule,
     HttpClientModule,
     MatTableModule,
+    CommonModule,
   ],
   providers: [UserService],
   templateUrl: './add-edit-users.component.html',
@@ -47,7 +50,7 @@ export class AddEditUsersComponent implements OnInit {
     this.addUserForm = this._fb.group({
       firstName: '',
       lastName: '',
-      email: '',
+      email: ['', [Validators.required, Validators.email]],
       password: '',
       role: '',
       createdOn: new Date().toString(),

@@ -30,7 +30,7 @@
     {
       "firstName": "2",
       "lastName": "e",
-      "email": "e",
+      "email": "e@gmail.com",
       "password": "e",
       "role": [
         "Customer"
@@ -129,6 +129,26 @@
         "Manager"
       ],
       "createdOn": "Fri May 03 2024 13:08:12 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "3a06",
+      "firstName": "",
+      "lastName": "",
+      "email": "ed@g.com",
+      "password": "",
+      "role": "",
+      "createdOn": "Fri May 03 2024 14:40:30 GMT+0200 (Central European Summer Time)"
+    },
+    {
+      "id": "dd22",
+      "firstName": "e",
+      "lastName": "e",
+      "email": "e@e.com",
+      "password": "e",
+      "role": [
+        "Customer"
+      ],
+      "createdOn": "Fri May 03 2024 14:42:29 GMT+0200 (Central European Summer Time)"
     }
   ],
   "orders": [
