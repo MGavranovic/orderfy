@@ -32,9 +32,7 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": [
-        "Customer"
-      ],
+      "role": ["Customer"],
       "createdOn": "Wed May 01 2024 18:48:02 GMT+0200 (Central European Summer Time)",
       "id": "049b"
     },
@@ -44,9 +42,7 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": [
-        "Customer"
-      ]
+      "role": ["Customer"]
     },
     {
       "id": "e6c2",
@@ -54,9 +50,7 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": [
-        "Customer"
-      ]
+      "role": ["Customer"]
     },
     {
       "id": "53ba",
@@ -64,9 +58,7 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": [
-        "Manager"
-      ]
+      "role": ["Manager"]
     },
     {
       "id": "b3ff",
@@ -74,9 +66,7 @@
       "lastName": "e",
       "email": "e",
       "password": "e",
-      "role": [
-        "Customer"
-      ],
+      "role": ["Customer"],
       "createdOn": "Wed May 01 2024 15:59:34 GMT+0200 (Central European Summer Time)"
     },
     {
@@ -103,9 +93,7 @@
       "lastName": "iha",
       "email": "e",
       "password": "e",
-      "role": [
-        "Customer"
-      ],
+      "role": ["Customer"],
       "createdOn": "Wed May 01 2024 18:37:29 GMT+0200 (Central European Summer Time)"
     },
     {
@@ -114,9 +102,7 @@
       "lastName": "2",
       "email": "3",
       "password": "4",
-      "role": [
-        "Customer"
-      ],
+      "role": ["Customer"],
       "createdOn": "Wed May 01 2024 18:38:51 GMT+0200 (Central European Summer Time)"
     }
   ],
@@ -500,7 +486,7 @@
       "id": "1ad8",
       "title": "3",
       "description": "",
-      "status": "Pending",
+      "status": "Successful",
       "amount": "",
       "currency": "",
       "firstName": "",
@@ -512,14 +498,14 @@
       "city": "",
       "country": "",
       "createdOn": "Thu May 02 2024 16:38:44 GMT+0200 (Central European Summer Time)",
-      "paidOn": "",
+      "paidOn": "Thu May 02 2024 16:51:05 GMT+0200 (Central European Summer Time)",
       "authorizationCode": "wY2d"
     },
     {
       "id": "e880",
       "title": "e",
       "description": "e",
-      "status": "Pending",
+      "status": "Successful",
       "amount": null,
       "currency": "e",
       "firstName": "e",
@@ -531,7 +517,7 @@
       "city": "",
       "country": "",
       "createdOn": "Thu May 02 2024 16:46:16 GMT+0200 (Central European Summer Time)",
-      "paidOn": "",
+      "paidOn": "Thu Apr 24 2024 16:46:16 GMT+0200 (Central European Summer Time)",
       "authorizationCode": ""
     },
     {

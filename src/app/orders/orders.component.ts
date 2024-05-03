@@ -121,7 +121,7 @@ export class OrdersComponent implements AfterViewInit, OnInit {
   getOrdersList() {
     this._orderService.getOrdersList().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
