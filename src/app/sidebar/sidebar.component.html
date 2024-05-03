@@ -1,6 +1,8 @@
 <div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
   <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">O</button>
+    <button class="logo" (click)="toggleCollapse()">
+      <img src="../../assets/logo/Orderfy.png" alt="Orderfy" />
+    </button>
     <div class="logo-text" *ngIf="collapsed">Orderfy</div>
     <button class="btn-close" *ngIf="collapsed" (click)="closeSidebar()">
       <i class="pi pi-times"></i>
