@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+Plеасе, clone the project using this link > https://github.com/MGavranovic/orderfy.git with command `git clone https://github.com/MGavranovic/orderfy.git`.
+
+After cloning the project, run `npm install`, and you should be all set 😁.
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 You can also run the project using `npm start` command.
